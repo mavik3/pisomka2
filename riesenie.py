@@ -1,16 +1,3 @@
-def myevald(f, d):
-    if isinstance(f, int) or isinstance(f, float):
-        return f
-    if isinstance(f, str):
-        return d[f]
-    op = f[0]
-    a = myevald(f[1], d)
-    b = myevald(f[2], d)
-    if op == '+': return a + b
-    if op == '-': return a - b
-    if op == '*': return a * b
-    if op == '/': return a / b
-    raise ValueError("Neznámy operator: " + op)
 def myderive(f, var):
     # constant
     if isinstance(f, (int, float)): return 0
@@ -40,5 +27,15 @@ def myderive(f, var):
 
 
 if __name__ == "__main__":
-    print(myderive(1, "x"))
-    print(myderive(["*", ["-", "x", 1], "x"], "x"))
+    print(myderive(1,"x"))
+    print(myderive("y","x"))
+    print(myderive("x","x"))
+    print(myderive("y","x"))
+    print(myderive(["-",2,"x"],"x"))
+    print(myderive(["*",2,"x"],"x"))
+    print(myderive(["*","x","x"],"x"))
+    print(myderive(["*","x","x"],"y"))
+    print(myderive(["*",["-","x",1],"x"],"x"))
+    print(myderive(["+","x","x"],"x"))
+    print(myderive(["+","y","x"],"x"))
+    print(myderive(["/","x","y"],"y"))
